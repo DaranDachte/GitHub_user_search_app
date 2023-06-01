@@ -1,33 +1,36 @@
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import UserInfo from "./components/UserInfo/UserInfo";
-import UserContext from "./contexts/UserContext";
+
 import { ThemContextProvider } from "./contexts/ThemContext";
 import { CountContextProvider } from "./contexts/CountContext";
 import { useEffect, useState } from "react";
 
-const FetchUser = async (username: string) => {
-  fetch(`https://api.github.com/users/${username}`)
-    .then((res) => res.json())
-    .then(console.log);
-};
-
 function App() {
   const [user, setUser] = useState<UserType | null>(null);
+  const [userInput, setUserInput] = useState("");
   useEffect(() => {
-    FetchUser("DaranDachte");
-  }, []);
+    FetchUser(userInput);
+  }, [userInput]);
 
+  const FetchUser = async (username: string) => {
+    console.log(username);
+    fetch(`https://api.github.com/users/${username}`)
+      .then((res) => res.json())
+      .then(setUser);
+  };
   return (
-    <UserContext.Provider value={"Hello World"}>
-      <ThemContextProvider>
-        <CountContextProvider>
-          <Header />
-          <Form />
-          <UserInfo user={user} />
-        </CountContextProvider>
-      </ThemContextProvider>
-    </UserContext.Provider>
+    <ThemContextProvider>
+      <CountContextProvider>
+        <Header />
+        <Form
+          userInput={userInput}
+          setUserInput={setUserInput}
+          FetchUser={FetchUser}
+        />
+        <UserInfo user={user} />
+      </CountContextProvider>
+    </ThemContextProvider>
   );
 }
 type UserType = {

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
 
-const Form = () => {
+const Form = ({ userInput, setUserInput, FetchUser }) => {
   return (
     <>
-      <FormWrapper>
+      <FormWrapper
+        onSubmit={(e) => {
+          e.preventDefault();
+          FetchUser(userInput);
+        }}
+      >
         <label htmlFor="userSearch">
           <svg
             width="25"
@@ -21,7 +26,13 @@ const Form = () => {
             />
           </svg>
         </label>
-        <input type="search" id="userSearch"></input>
+        <input
+          value={userInput}
+          onChange={(event) => setUserInput(event.target.value)}
+          type="search"
+          id="userSearch"
+          placeholder="Search GitHub username…"
+        ></input>
 
         <Button />
       </FormWrapper>
