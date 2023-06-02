@@ -1,7 +1,6 @@
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import UserInfo from "./components/UserInfo/UserInfo";
-
 import { ThemContextProvider } from "./contexts/ThemContext";
 import { CountContextProvider } from "./contexts/CountContext";
 import { useEffect, useState } from "react";
@@ -9,15 +8,20 @@ import { useEffect, useState } from "react";
 function App() {
   const [user, setUser] = useState<UserType | null>(null);
   const [userInput, setUserInput] = useState("");
-  useEffect(() => {
-    FetchUser(userInput);
-  }, [userInput]);
+  const [isNotFound, setIsNotFound] = useState(true);
+  //  useEffect(() => {
+  // FetchUser(userInput);
+  // }, [userInput]);
 
   const FetchUser = async (username: string) => {
     console.log(username);
     fetch(`https://api.github.com/users/${username}`)
-      .then((res) => res.json())
-      .then(setUser);
+      .then((res) => {
+        return res.json();
+
+        console.log(res);
+      })
+      .then((res) => setUser(res));
   };
   return (
     <ThemContextProvider>
@@ -28,7 +32,8 @@ function App() {
           setUserInput={setUserInput}
           FetchUser={FetchUser}
         />
-        <UserInfo user={user} />
+        {user?.id ? <UserInfo user={user} /> : null}
+        {isNotFound && "No results"}
       </CountContextProvider>
     </ThemContextProvider>
   );
