@@ -22,13 +22,13 @@ const UserInfo = ({ user }) => {
       </Container>
       <NickName>{user?.login}</NickName>
       <BioResult>{user?.bio}</BioResult>
-      <ContainerResult>
-        <UserStatistic>
-          <Repos>Repos: {user?.public_repos}</Repos>
-          <Followers>Followers: {user?.followers}</Followers>
-          <Following>Following: {user?.following}</Following>
-        </UserStatistic>
-      </ContainerResult>
+      {/* <ContainerResult>*/}
+      <UserStatistic>
+        <Repos>Repos: {user?.public_repos}</Repos>
+        <Followers>Followers: {user?.followers}</Followers>
+        <Following>Following: {user?.following}</Following>
+      </UserStatistic>
+      {/*</ContainerResult>*/}
       <ContainerGrid>
         <Location>
           <svg
@@ -174,56 +174,62 @@ const BioResult = styled.p`
   opacity: 0.75;
 `;
 
-const ContainerResult = styled.div`
+//const ContainerResult = styled.div`
+//display: flex;  justify-content: flex-start;  background: #f6f8ff;  border-radius: 10px;  width: 480px;  height: 85px;`;
+
+const UserStatistic = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  justify-content: center;
   background: #f6f8ff;
   border-radius: 10px;
-  width: 480px;
+  width: 800px;
   height: 85px;
+  margin: auto;
+  &:hover {
+    border: 1px solid #00bfff;
+  }
 `;
 
-const UserStatistic = styled.ul``;
-
-const Repos = styled.li`
+const Repos = styled.p`
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
-  text-align: left;
+  text-align: center;
+  flex: 1;
 `;
 
-const Followers = styled.li`
+const Followers = styled.p`
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
-  text-align: left;
+  text-align: center;
+  flex: 1;
 `;
 
-const Following = styled.li`
+const Following = styled.p`
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
-  text-align: left;
+  text-align: center;
+  flex: 1;
 `;
 
 const ContainerGrid = styled.div`
   display: grid;
   grid-template-columns: 400px 400px;
   grid-template-rows: 100px 100px;
+  justify-content: center;
   gap: 5px;
   weight: 700px;
   height: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
-  border: 1px solid #808080;
-  border-radius: 5px;
 `;
 
 const Location = styled.p`
@@ -236,10 +242,9 @@ const Location = styled.p`
   color: #4b6a9b;
   margin-left: 5px;
   padding: 10px;
-  border: 1px solid #808080;
-  border-radius: 5px;
+  border-radius: 10px;
   &:hover {
-    background-color: #808080;
+    background-color: rgb(246, 248, 255);
     color: #000000;
   }
 `;
@@ -252,11 +257,10 @@ const GitHibLink = styled.p`
   text-align: left;
   color: #4b6a9b;
   margin-left: 5px;
-  border: 1px solid #808080;
-  border-radius: 5px;
   padding: 10px;
+  border-radius: 10px;
   &:hover {
-    background-color: #808080;
+    background-color: rgb(246, 248, 255);
     color: #000000;
   }
 `;
@@ -271,10 +275,9 @@ const Twitter = styled.p`
   color: #4b6a9b;
   margin-left: 5px;
   padding: 10px;
-  border: 1px solid #808080;
-  border-radius: 5px;
+  border-radius: 10px;
   &:hover {
-    background-color: #808080;
+    background-color: rgb(246, 248, 255);
     color: #000000;
   }
 `;
@@ -288,10 +291,9 @@ const GitHub = styled.p`
   color: #4b6a9b;
   margin-left: 5px;
   padding: 10px;
-  border: 1px solid #808080;
-  border-radius: 5px;
+  border-radius: 10px;
   &:hover {
-    background-color: #808080;
+    background-color: rgb(246, 248, 255);
     color: #000000;
   }
 `;
