@@ -3,7 +3,8 @@ import Form from "./components/Form/Form";
 import UserInfo from "./components/UserInfo/UserInfo";
 import { ThemContextProvider } from "./contexts/ThemContext";
 import { CountContextProvider } from "./contexts/CountContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ReactComponent as Avatar } from "./assets/avatar.png";
 
 function App() {
   const [user, setUser] = useState<UserType | null>(null);
@@ -32,6 +33,7 @@ function App() {
           setUserInput={setUserInput}
           FetchUser={FetchUser}
         />
+
         {user?.id ? <UserInfo user={user} /> : null}
         {isNotFound && "No results"}
       </CountContextProvider>

@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import ThemContext from "../../contexts/ThemContext";
+import { useContext } from "react";
 
 const Header = () => {
+  const { SwitchMode } = useContext(ThemContext);
   return (
     <Container>
       <Title>devfinder</Title>
-      <ThemContainer>
-        <Them>Dark</Them>
+      <Them onClick={SwitchMode}>
+        Dark {}
         <svg
           width="20"
           height="20"
@@ -18,10 +21,19 @@ const Header = () => {
             fill="#222731"
           />
         </svg>
-      </ThemContainer>
+      </Them>
     </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  width: 900px;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: auto;
+`;
 
 const Title = styled.p`
   font-family: "Space Mono";
@@ -40,18 +52,12 @@ const Them = styled.p`
   line-height: 19px;
   letter-spacing: 2.5px;
   color: #222731;
-  margin-right: 10px;
 `;
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-`;
-const ThemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
+//const ThemContainer = styled.div`
+//display: flex;
+//flex-direction: row;
+//align-items: center;
+//`;
 
 export default Header;

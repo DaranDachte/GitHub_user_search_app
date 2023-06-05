@@ -5,7 +5,7 @@ const Button = () => {
 };
 
 const ButtonWrapper = styled.button`
-  background-color: #0079ff;
+  background-color: ${(props) => props.theme.colors.themeBtn};
   color: #ffffff;
   height: 50px;
   width: 106px;
@@ -17,6 +17,10 @@ const ButtonWrapper = styled.button`
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
+  &:hover {
+    cursor: pointer;
+    background-color: #60abff;
+  }
 `;
 
 export default Button;
