@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useContext, useEffect } from "react";
 import ThemContext from "../../contexts/ThemContext";
 import CountContext from "../../contexts/CountContext";
-import Avatar from "../../assets/avatar.png";
+import Avatar from "../../assets/Avatar.png";
 
 const UserInfo = ({ user }) => {
   const { lightMode, SwitchMode } = useContext(ThemContext);

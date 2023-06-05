@@ -4,15 +4,11 @@ import UserInfo from "./components/UserInfo/UserInfo";
 import { ThemContextProvider } from "./contexts/ThemContext";
 import { CountContextProvider } from "./contexts/CountContext";
 import { useState } from "react";
-import { ReactComponent as Avatar } from "./assets/avatar.png";
 
 function App() {
   const [user, setUser] = useState<UserType | null>(null);
   const [userInput, setUserInput] = useState("");
   const [isNotFound, setIsNotFound] = useState(true);
-  //  useEffect(() => {
-  // FetchUser(userInput);
-  // }, [userInput]);
 
   const FetchUser = async (username: string) => {
     console.log(username);
@@ -33,7 +29,6 @@ function App() {
           setUserInput={setUserInput}
           FetchUser={FetchUser}
         />
-
         {user?.id ? <UserInfo user={user} /> : null}
         {isNotFound && "No results"}
       </CountContextProvider>
