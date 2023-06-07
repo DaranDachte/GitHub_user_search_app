@@ -25,13 +25,14 @@ const UserInfo = ({ user }) => {
       <Container>
         <Title>{user?.name}</Title>
         <Date>{user?.created_at}</Date>
-
         <NickName>{user?.login}</NickName>
         <BioResult>{user?.bio}</BioResult>
         <UserStatistic>
-          <Repos>Repos: {user?.public_repos}</Repos>
-          <Followers>Followers: {user?.followers}</Followers>
-          <Following>Following: {user?.following}</Following>
+          <Ul>
+            <Repos>Repos: {user?.public_repos}</Repos>
+            <Followers>Followers: {user?.followers}</Followers>
+            <Following>Following: {user?.following}</Following>
+          </Ul>
         </UserStatistic>
         <ContainerGrid>
           <Location>
@@ -49,7 +50,7 @@ const UserInfo = ({ user }) => {
                 fill="#4B6A9B"
               />
             </svg>
-            {} {user?.location}
+            {} {user?.location ? user.location : "Not Available"}
           </Location>
           <Twitter>
             <svg
@@ -64,7 +65,8 @@ const UserInfo = ({ user }) => {
                 fill="#4B6A9B"
               />
             </svg>
-            {} {user?.twitter_username}
+            {}{" "}
+            {user?.twitter_username ? user.twitter_username : "Not available"}
           </Twitter>
           <GitHibLink>
             <svg
@@ -87,7 +89,7 @@ const UserInfo = ({ user }) => {
                 />
               </g>
             </svg>
-            {} {user?.blog}
+            {} {user?.blog ? user.blog : "Not available"}
           </GitHibLink>
 
           <GitHub>
@@ -115,7 +117,7 @@ const UserInfo = ({ user }) => {
                 />
               </g>
             </svg>
-            {} {user?.url}
+            {} {user?.email ? user.email : "Not Available"}
           </GitHub>
         </ContainerGrid>
       </Container>
@@ -193,7 +195,8 @@ const BioResult = styled.p`
 
 const UserStatistic = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: row;
   background: #f6f8ff;
   border-radius: 10px;
   width: 65%;
@@ -204,7 +207,10 @@ const UserStatistic = styled.div`
   }
 `;
 
-const Repos = styled.p`
+const Ul = styled.ul`
+  list-style-type: none;
+`;
+const Repos = styled.li`
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
@@ -214,7 +220,7 @@ const Repos = styled.p`
   flex: 1;
 `;
 
-const Followers = styled.p`
+const Followers = styled.li`
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
@@ -224,7 +230,7 @@ const Followers = styled.p`
   flex: 1;
 `;
 
-const Following = styled.p`
+const Following = styled.li`
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
