@@ -23,15 +23,28 @@ const UserInfo = ({ user }) => {
         }
       </Gravatar>
       <Container>
-        <Title>{user?.name}</Title>
-        <Date>{user?.created_at}</Date>
+        <FirstDiv>
+          <Title>{user?.name}</Title>
+          <Date>{user?.created_at}</Date>
+        </FirstDiv>
         <NickName>{user?.login}</NickName>
-        <BioResult>{user?.bio}</BioResult>
+        <BioResult>
+          {user?.bio ? user.bio : "This profile has no bio"}
+        </BioResult>
         <UserStatistic>
           <Ul>
-            <Repos>Repos: {user?.public_repos}</Repos>
-            <Followers>Followers: {user?.followers}</Followers>
-            <Following>Following: {user?.following}</Following>
+            <Repos>
+              <StyledTitle>Repos</StyledTitle>{" "}
+              <StyledValue> {user?.public_repos}</StyledValue>
+            </Repos>
+            <Followers>
+              <StyledTitle>Followers</StyledTitle>
+              <StyledValue> {user?.followers}</StyledValue>
+            </Followers>
+            <Following>
+              <StyledTitle>Following</StyledTitle>{" "}
+              <StyledValue>{user?.following}</StyledValue>
+            </Following>
           </Ul>
         </UserStatistic>
         <ContainerGrid>
@@ -117,7 +130,7 @@ const UserInfo = ({ user }) => {
                 />
               </g>
             </svg>
-            {} {user?.email ? user.email : "Not Available"}
+            {} {user?.company ? user.company : "Not Available"}
           </GitHub>
         </ContainerGrid>
       </Container>
@@ -128,8 +141,8 @@ const UserInfo = ({ user }) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 900px;
-  height: 600px;
+  width: 740px;
+  height: 444px;
   margin: auto;
   margin-top: 20px;
   background: ${(props) => props.theme.colors.card};
@@ -146,8 +159,17 @@ const ImgAvatar = styled.img`
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  padding-right: 40px;
+  width: 100%;
+`;
+
+const FirstDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding-top: 44px;
 `;
 
 const Gravatar = styled.div``;
@@ -158,7 +180,8 @@ const Title = styled.h2`
   font-weight: 700;
   font-size: 26px;
   line-height: 39px;
-  color: #2b3442;
+  color: ${(props) => props.theme.colors.textBolded};
+  margin: 0;
 `;
 
 const Date = styled.p`
@@ -177,6 +200,8 @@ const NickName = styled.p`
   font-size: 16px;
   line-height: 24px;
   color: #0079ff;
+  margin: 0;
+  padding-top: 2px;
 `;
 
 const BioResult = styled.p`
@@ -188,56 +213,84 @@ const BioResult = styled.p`
   color: #4b6a9b;
   mix-blend-mode: normal;
   opacity: 0.75;
+  margin: 0;
+  padding-top: 20px;
 `;
 
 //const ContainerResult = styled.div`
 //display: flex;  justify-content: flex-start;  background: #f6f8ff;  border-radius: 10px;  width: 480px;  height: 85px;`;
 
 const UserStatistic = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  background: #f6f8ff;
+  background: ${(props) => props.theme.colors.background};
   border-radius: 10px;
-  width: 65%;
+  width: 100%;
   height: 20%;
-  margin-left: 150px;
+  margin-top: 32px;
   &:hover {
     border: 1px solid #00bfff;
   }
 `;
 
 const Ul = styled.ul`
+  display: flex;
+  flex-direction: row;
   list-style-type: none;
+  justify-content: space-between;
+  wight: 100%;
+  padding-right: 83px;
 `;
 const Repos = styled.li`
+  display: flex;
+  flex-direction: column;
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
   text-align: center;
-  flex: 1;
 `;
 
 const Followers = styled.li`
+  display: flex;
+  flex-direction: column;
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
   text-align: center;
-  flex: 1;
 `;
 
 const Following = styled.li`
+  display: flex;
+  flex-direction: column;
   font-family: Space Mono;
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
   text-align: center;
-  flex: 1;
+`;
+
+const StyledTitle = styled.p`
+  margin: 0;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: ${(props) => props.theme.colors.textNorm};
+`;
+
+const StyledValue = styled.p`
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 33px;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.colors.textBolded};
+  margin: 0;
 `;
 
 const ContainerGrid = styled.div`
@@ -245,12 +298,8 @@ const ContainerGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
-  margin-left: 100px;
   gap: 5px;
-  weight: 700px;
-  height: 200px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 100%;
 `;
 
 const Location = styled.p`
@@ -260,7 +309,7 @@ const Location = styled.p`
   line-height: 22px;
   letter-spacing: 0px;
   text-align: left;
-  color: #4b6a9b;
+  color: ${(props) => props.theme.colors.textNorm};
   margin-left: 5px;
   padding: 10px;
   border-radius: 10px;
@@ -277,7 +326,7 @@ const GitHibLink = styled.p`
   line-height: 22px;
   letter-spacing: 0px;
   text-align: left;
-  color: #4b6a9b;
+  color: ${(props) => props.theme.colors.textNorm};
   margin-left: 5px;
   padding: 10px;
   border-radius: 10px;
@@ -295,7 +344,7 @@ const Twitter = styled.p`
   line-height: 22px;
   letter-spacing: 0px;
   text-align: left;
-  color: #4b6a9b;
+  color: ${(props) => props.theme.colors.textNorm};
   margin-left: 5px;
   padding: 10px;
   border-radius: 10px;
@@ -312,7 +361,7 @@ const GitHub = styled.p`
   line-height: 22px;
   letter-spacing: 0px;
   text-align: left;
-  color: #4b6a9b;
+  color: ${(props) => props.theme.colors.textNorm};
   margin-left: 5px;
   padding: 10px;
   border-radius: 10px;

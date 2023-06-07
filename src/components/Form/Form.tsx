@@ -48,7 +48,7 @@ const FormWrapper = styled.form`
   justify-content: space-between;
   align-items: center;
   height: 69px;
-  width: 900px;
+  width: 744px;
   margin: auto;
   border-radius: 10px;
   border: none;
@@ -67,8 +67,8 @@ const Input = styled.input`
   outline-color: #fefefe;
   wight: 400px;
   margin-left: 20px;
-
   flex: 1;
+  padding: 0 10px;
 `;
 
 const Svg = styled.div`

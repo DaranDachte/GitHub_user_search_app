@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import UserInfo from "./components/UserInfo/UserInfo";
@@ -8,29 +10,37 @@ import { useState } from "react";
 function App() {
   const [user, setUser] = useState<UserType | null>(null);
   const [userInput, setUserInput] = useState("");
-  const [isNotFound, setIsNotFound] = useState(true);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   const FetchUser = async (username: string) => {
     console.log(username);
     fetch(`https://api.github.com/users/${username}`)
       .then((res) => {
+        console.log(typeof res.status);
+        if (res.status == 404) {
+          console.log(res);
+          console.log(res.status);
+          setIsNotFound(true);
+        }
         return res.json();
-
-        console.log(res);
       })
-      .then((res) => setUser(res));
+      .then((res) => {
+        setIsNotFound(false);
+        setUser(res);
+      });
   };
   return (
     <ThemContextProvider>
       <CountContextProvider>
-        <Header />
-        <Form
-          userInput={userInput}
-          setUserInput={setUserInput}
-          FetchUser={FetchUser}
-        />
-        {user?.id ? <UserInfo user={user} /> : null}
-        {isNotFound && "No results"}
+        <AppWrapper>
+          <Header />
+          <Form
+            userInput={userInput}
+            setUserInput={setUserInput}
+            FetchUser={FetchUser}
+          />
+          {user?.id ? <UserInfo user={user} /> : "No results"}
+        </AppWrapper>
       </CountContextProvider>
     </ThemContextProvider>
   );
@@ -70,4 +80,9 @@ type UserType = {
   url: string;
 };
 
+const AppWrapper = styled.div`
+  width: 100%;
+  heigth: 100vh;
+  background: ${(props) => props.theme.colors.background};
+`;
 export default App;
