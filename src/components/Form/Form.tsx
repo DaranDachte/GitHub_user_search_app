@@ -5,7 +5,7 @@ const Form = ({ userInput, setUserInput, FetchUser }) => {
   return (
     <>
       <FormWrapper
-        onSubmit={(e) => {
+        onSubmit={(e: React.FormEvent<HTMLInputElement>): void => {
           e.preventDefault();
           FetchUser(userInput);
         }}
@@ -30,7 +30,9 @@ const Form = ({ userInput, setUserInput, FetchUser }) => {
         </Svg>
         <Input
           value={userInput}
-          onChange={(event) => setUserInput(event.target.value)}
+          onChange={(event: React.FormEvent<HTMLInputElement>): void =>
+            setUserInput((event.target as HTMLInputElement).value)
+          }
           type="search"
           id="userSearch"
           placeholder="Search GitHub username…"

@@ -217,9 +217,6 @@ const BioResult = styled.p`
   padding-top: 20px;
 `;
 
-//const ContainerResult = styled.div`
-//display: flex;  justify-content: flex-start;  background: #f6f8ff;  border-radius: 10px;  width: 480px;  height: 85px;`;
-
 const UserStatistic = styled.div`
   background: ${(props) => props.theme.colors.background};
   border-radius: 10px;
