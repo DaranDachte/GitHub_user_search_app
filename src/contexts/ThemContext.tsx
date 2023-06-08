@@ -28,7 +28,7 @@ export const ThemContextProvider = ({ children }: ThemContextProviderProps) => {
   const darkTheme = {
     colors: {
       background: "#141D2F",
-      themeBtn: "#fff",
+      themeBtn: "#60ABFF",
       card: "#1E2A47",
       textNorm: "#fff",
       textBolded: "#FFF",

@@ -191,7 +191,7 @@ const Date = styled.p`
   font-size: 15px;
   line-height: 22px;
   text-align: right;
-  color: #697c9a;
+  color: ${(props) => props.theme.colors.textNorm};
 `;
 const NickName = styled.p`
   font-family: "Space Mono";
@@ -199,7 +199,7 @@ const NickName = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #0079ff;
+  color: ${(props) => props.theme.colors.textNorm};
   margin: 0;
   padding-top: 2px;
 `;
@@ -210,7 +210,7 @@ const BioResult = styled.p`
   font-weight: 400;
   font-size: 15px;
   line-height: 25px;
-  color: #4b6a9b;
+  color: ${(props) => props.theme.colors.textNorm};
   mix-blend-mode: normal;
   opacity: 0.75;
   margin: 0;
@@ -297,6 +297,7 @@ const ContainerGrid = styled.div`
   justify-content: center;
   gap: 5px;
   width: 100%;
+  margin-top: 20px;
 `;
 
 const Location = styled.p`
@@ -307,7 +308,7 @@ const Location = styled.p`
   letter-spacing: 0px;
   text-align: left;
   color: ${(props) => props.theme.colors.textNorm};
-  margin-left: 5px;
+  margin: 0;
   padding: 10px;
   border-radius: 10px;
   &:hover {
@@ -324,7 +325,7 @@ const GitHibLink = styled.p`
   letter-spacing: 0px;
   text-align: left;
   color: ${(props) => props.theme.colors.textNorm};
-  margin-left: 5px;
+  margin: 0;
   padding: 10px;
   border-radius: 10px;
   &:hover {
@@ -342,7 +343,7 @@ const Twitter = styled.p`
   letter-spacing: 0px;
   text-align: left;
   color: ${(props) => props.theme.colors.textNorm};
-  margin-left: 5px;
+  margin: 0px;
   padding: 10px;
   border-radius: 10px;
   &:hover {
@@ -359,7 +360,7 @@ const GitHub = styled.p`
   letter-spacing: 0px;
   text-align: left;
   color: ${(props) => props.theme.colors.textNorm};
-  margin-left: 5px;
+  margin: 0;
   padding: 10px;
   border-radius: 10px;
   &:hover {

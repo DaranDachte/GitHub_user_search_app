@@ -54,7 +54,7 @@ const FormWrapper = styled.form`
   margin: auto;
   border-radius: 10px;
   border: none;
-  background-color: #fefefe;
+  background-color: ${(props) => props.theme.colors.card};
 `;
 
 const Input = styled.input`
@@ -66,7 +66,7 @@ const Input = styled.input`
   text-align: left;
   border: none;
   outline: none;
-  outline-color: #fefefe;
+  outline-color: ${(props) => props.theme.colors.card};
   wight: 400px;
   margin-left: 20px;
   flex: 1;

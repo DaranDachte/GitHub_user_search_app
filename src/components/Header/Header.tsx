@@ -8,7 +8,7 @@ const Header = () => {
     <Container>
       <Title>devfinder</Title>
       <Them onClick={SwitchMode}>
-        Dark {}
+        Dark {}{" "}
         <svg
           width="20"
           height="20"
@@ -41,7 +41,7 @@ const Title = styled.p`
   font-weight: 700;
   font-size: 26px;
   line-height: 39px;
-  color: #222731;
+  color: ${(props) => props.theme.colors.textBolded};
 `;
 
 const Them = styled.p`
@@ -51,7 +51,7 @@ const Them = styled.p`
   font-size: 13px;
   line-height: 19px;
   letter-spacing: 2.5px;
-  color: #222731;
+  color: ${(props) => props.theme.colors.textBolded};
 `;
 
 export default Header;
