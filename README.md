@@ -3,7 +3,7 @@ Hello! I wrote this project in TypeScript using the Styled-components library. h
 
 The design was taken from the online graphic editor Figma. https://www.figma.com/
 
-You can follow this link to see how it works  git-hub-user-search-app-orcin.vercel.app
+You can follow this link to see how it works  [git-hub-user-search-app-orcin.vercel.app](https://git-hub-user-search-app-orcin.vercel.app/)
 
 
 
