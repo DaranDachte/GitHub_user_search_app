@@ -1,5 +1,6 @@
 # gitHub_user_search_app
 Hello! I wrote this project in TypeScript using the Styled-components library. https://styled-components.com/
+
 The design was taken from the online graphic editor Figma. https://www.figma.com/
 
 
