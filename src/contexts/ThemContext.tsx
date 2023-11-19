@@ -13,6 +13,7 @@ type ThemContextProviderProps = {
 
 const ThemContext = createContext<ThemContextType>({
   lightMode: true,
+
   SwitchMode: () => {},
 });
 
@@ -21,7 +22,6 @@ export default ThemContext;
 export const ThemContextProvider = ({ children }: ThemContextProviderProps) => {
   const [lightMode, setLightMode] = useState(true);
   const SwitchMode = () => {
-    console.log(lightMode);
     setLightMode((prevState) => !prevState);
   };
 

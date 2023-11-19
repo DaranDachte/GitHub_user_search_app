@@ -13,10 +13,8 @@ function App() {
   const [isNotFound, setIsNotFound] = useState(false);
 
   const FetchUser = async (username: string) => {
-    console.log(username);
     fetch(`https://api.github.com/users/${username}`)
       .then((res) => {
-        console.log(typeof res.status);
         if (res.status == 404) {
           console.log(res);
           console.log(res.status);
@@ -39,7 +37,17 @@ function App() {
             setUserInput={setUserInput}
             FetchUser={FetchUser}
           />
-          {user?.id ? <UserInfo user={user} /> : "No results"}
+          {user?.id ? (
+            <UserInfo user={user} />
+          ) : (
+            <AttentionComponent>
+              <p>
+                {!isNotFound && userInput.length === 0
+                  ? "Wright some  in Search form"
+                  : "No Results"}
+              </p>
+            </AttentionComponent>
+          )}
         </AppWrapper>
       </CountContextProvider>
     </ThemContextProvider>
@@ -84,5 +92,11 @@ const AppWrapper = styled.div`
   width: 100%;
   heigth: 100vh;
   background: ${(props) => props.theme.colors.background};
+`;
+
+const AttentionComponent = styled.div`
+  display: flex;
+  justify-content: center;
+  color: ${(props) => props.theme.colors.textBolded};
 `;
 export default App;
