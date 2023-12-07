@@ -1,8 +1,7 @@
 # gitHub_user_search_app
 Hello! I wrote this project in TypeScript using the Styled-components library. https://styled-components.com/
 
-You can follow this link to see how it works  [git-hub-user-search-app-orcin.vercel.app](https://git-hub-user-search-app-orcin.vercel.app/)
-
+You can follow this link to see how it works  <a href="https://git-hub-user-search-app-orcin.vercel.app/" target="_blank">gitHub User Search App</a>  
 
 
 
